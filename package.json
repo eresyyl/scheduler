@@ -10,7 +10,10 @@
   "license": "ISC",
   "dependencies": {
     "agenda": "^1.0.3",
-    "koa": "^2.3.0",
+    "koa": "^2.4.1",
+    "koa-body": "^2.5.0",
+    "koa-router": "^7.2.1",
+    "mongoose": "^4.13.1",
     "node-fetch": "^1.7.3"
   }
 }

@@ -1,7 +1,7 @@
 const Agenda = require('agenda');
 const fetch = require('node-fetch');
 
-const mongoConnectionString = require('./config/agenda.json').connection_string;
+const mongoConnectionString = require('./config/mongo.json').connection_string;
  
 const agenda = new Agenda({db: {address: mongoConnectionString}});
 
