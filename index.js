@@ -4,12 +4,15 @@ const Koa = require('koa'),
 	agenda = require('./lib/agenda.js'),
 	{routes, allowedMethods} = require('./lib/routes'),
 	mongoConnectionString = require('./config/mongo.json').connection_string;	
+	
+require('./lib/jobs/meetupNotifications.js')(agenda);
 
-
+mongoose.Promise = global.Promise;
+	
 mongoose.connect(mongoConnectionString, {useMongoClient: true});
-let db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
+db.once('open', () => {
 	console.log('Mongoose is on!');
 });
 	
