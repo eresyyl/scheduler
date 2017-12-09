@@ -3,7 +3,8 @@ const Koa = require('koa'),
 	mongoose = require('mongoose'),
 	agenda = require('./lib/agenda.js'),
 	{routes, allowedMethods} = require('./lib/routes'),
-	mongoConnectionString = require('./config/mongo.json').connection_string;	
+	mongoConnectionString = require('./config/mongo.json').connection_string,
+	port = require('./config/general.json').server_port || 3000;	
 	
 require('./lib/jobs/meetupNotifications.js')(agenda);
 
@@ -19,7 +20,9 @@ db.once('open', () => {
 app.use(routes());
 app.use(allowedMethods());
 
-app.listen(3000);
+app.listen(port, async() => {
+	console.log(`Listening on port: ${port}`);
+});
 
 agenda.on('ready', async() =>  {
 	console.log('agenda is ready!');
