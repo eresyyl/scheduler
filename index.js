@@ -6,7 +6,7 @@ const Koa = require('koa'),
 	mongoConnectionString = require('./config/mongo.json').connection_string,
 	port = require('./config/general.json').server_port || 3000;	
 	
-require('./lib/jobs/meetupNotifications.js')(agenda);
+//require('./lib/jobs/meetupNotifications.js')(agenda);
 require('./lib/jobs/coffeeOrderNotifications.js')(agenda);
 
 mongoose.Promise = global.Promise;
